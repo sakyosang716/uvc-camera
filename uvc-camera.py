@@ -29,6 +29,7 @@ if len(camera_indexes) == 0:
 # Show error message if camera cannot be opened
 try:
     camera = cv2.VideoCapture(camera_indexes[0])  # Open the first detected camera by default
+    camera.set(6, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')) 
 except:
     messagebox.showerror("Error", "The camera won't open, the equipment is damaged or the contact is bad.")
     sys.exit(0)
@@ -85,6 +86,7 @@ def on_switch_cam(value):
     camera.release()
     # 创建新的捕捉对象并打开摄像头
     camera = cv2.VideoCapture(value)
+    camera.set(6, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')) 
     if not camera.isOpened():
         messagebox.showerror("Error", "The camera cannot be turned on.")
         sys.exit()
