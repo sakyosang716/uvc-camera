@@ -12,4 +12,4 @@ This is a photo program that supports the following functions:
 
 The finished photos are saved in the current home directory, and only one is saved, named capture.png.
 
-![image](https://user-images.githubusercontent.com/62707482/220235623-da6dea66-2767-43b0-b07c-dd7cc8278848.png)
+
