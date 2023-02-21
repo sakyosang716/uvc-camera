@@ -23,14 +23,14 @@ print("Available cameras:", camera_indexes)
 
 # Show error message if no camera is available
 if len(camera_indexes) == 0:
-    messagebox.showerror("Error", "找不到摄像头")
+    messagebox.showerror("Error", "Can't find the camera")
     sys.exit(0)
 
 # Show error message if camera cannot be opened
 try:
     camera = cv2.VideoCapture(camera_indexes[0])  # Open the first detected camera by default
 except:
-    messagebox.showerror("Error", "摄像头打不开，设备损坏或接触不良")
+    messagebox.showerror("Error", "The camera won't open, the equipment is damaged or the contact is bad.")
     sys.exit(0)
 
 # Detect available resolutions
@@ -69,7 +69,7 @@ def on_capture():
     imgtk = ImageTk.PhotoImage(image=current_image)
     photo_panel.imgtk = imgtk
     photo_panel.config(image=imgtk)
-    messagebox.showinfo("Info", "拍照成功")
+    messagebox.showinfo("Info", "Photo taken successfully")
 
 def on_switch_res(value):
     global camera
@@ -86,7 +86,7 @@ def on_switch_cam(value):
     # 创建新的捕捉对象并打开摄像头
     camera = cv2.VideoCapture(value)
     if not camera.isOpened():
-        messagebox.showerror("错误", "摄像头无法打开")
+        messagebox.showerror("Error", "The camera cannot be turned on.")
         sys.exit()
     on_video_loop()
            
@@ -118,7 +118,7 @@ photo_panel.grid( # 右上居中对齐
 )
 
 # 摄像头标签+下拉框
-label3 = tk.Label(root, text="选择摄像头")
+label3 = tk.Label(root, text="Select camera")
 label3.grid(row=1, column=0, sticky="E", padx=10, pady=10)
 
 variable1 = tk.StringVar(root)
@@ -127,7 +127,7 @@ cam_dropdown = tk.OptionMenu(root, variable1, *camera_indexes, command=on_switch
 cam_dropdown.grid(row=1, column=1, sticky="W", padx=10, pady=10)
 
 # 分辨率标签+下拉框
-label4 = tk.Label(root, text="选择分辨率")
+label4 = tk.Label(root, text="Select resolution")
 label4.grid(row=1, column=2, sticky="E", padx=10, pady=10)
 
 variable2 = tk.StringVar(root)
@@ -136,10 +136,10 @@ res_dropdown = tk.OptionMenu(root, variable2, *res_options, command=on_switch_re
 res_dropdown.grid(row=1, column=3, sticky="W", padx=10, pady=10)
 
 # 拍照和退出按钮
-capture_button = tk.Button(root, text="拍照", command=on_capture)
+capture_button = tk.Button(root, text="Take a picture", command=on_capture)
 capture_button.grid(row=1, column=4, padx=10, pady=10)
 
-exit_button = tk.Button(root, text="退出", command=root.quit)
+exit_button = tk.Button(root, text="Quit", command=root.quit)
 exit_button.grid(row=1, column=5, padx=10, pady=10)
 
 # 一些页面设置
