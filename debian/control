@@ -1,0 +1,15 @@
+Source: uvc-camera-p
+Section: x11
+Priority: optional
+Maintainer: wangjingwen <wangjingwen@kylinos.cn>
+Build-Depends: debhelper (>= 9)
+
+Package: uvc-camera-p
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+         python3.8,
+         python3-tk,
+         python3-opencv,
+         python3-pil,
+         python3-pil.imagetk,
+Description:  通用高拍仪拍照程序
